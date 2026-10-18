@@ -1,0 +1,32 @@
+networks:
+  blockchain-net:
+    driver: bridge
+
+services:
+  honest-miner:
+    build: .
+    networks:
+      - blockchain-net
+    environment:
+      - MINER_ROLE=honest
+      - Z_CONFIRMATIONS=6
+      - ANGREIFER_ANTEIL=0.1
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+
+  attacker-miner:
+    build: .
+    networks:
+      - blockchain-net
+    ports:
+      - "5000:5000"
+    environment:
+      - MINER_ROLE=attacker
+      - Z_CONFIRMATIONS=6
+      - ANGREIFER_ANTEIL=0.1
+    deploy:
+      resources:
+        limits:
+          cpus: "0.111111111111111"

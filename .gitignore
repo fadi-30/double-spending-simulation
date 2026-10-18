@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Entsteht beim Start eines Knotens und gehört nicht ins Repository.
+# Läge sie im Image, hätten beide Container denselben Schlüssel.
+private_key.json
+
+# Editor
+.vscode/
